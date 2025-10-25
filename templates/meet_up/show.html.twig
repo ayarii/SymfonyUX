@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div {{ stimulus_controller('hello') }}>
+        <input data-hello-target="name" type="text" placeholder="Ton nom">
+        <button data-action="click->hello#greet">Dire bonjour</button>
+        <p data-hello-target="output"></p>
+    </div>
+{% endblock %}

@@ -60,4 +60,7 @@ return [
     '@symfony/ux-leaflet-map' => [
         'path' => './vendor/symfony/ux-leaflet-map/assets/dist/map_controller.js',
     ],
+    'chart.js' => [
+        'version' => '3.9.1',
+    ],
 ];

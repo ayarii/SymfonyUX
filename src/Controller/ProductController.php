@@ -23,7 +23,6 @@ final class ProductController extends AbstractController
     {
         $form = $this->createForm(CountryFormType::class);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $country = $form->get('country')->getData();
         }
@@ -32,4 +31,5 @@ final class ProductController extends AbstractController
             'form' => $form,
         ]);
     }
+
 }

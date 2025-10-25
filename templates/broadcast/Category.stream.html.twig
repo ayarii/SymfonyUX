@@ -1,0 +1,31 @@
+{% block create %}
+    <turbo-stream action="append" target="categories">
+        <template>
+            <tr id="category_{{ entity.id }}">
+                <td>{{ entity.id }}</td>
+                <td>
+                    <a href="{{ path('app_category_show', {'id': entity.id}) }}">show</a>
+                    <a href="{{ path('app_category_edit', {'id': entity.id}) }}">edit</a>
+                </td>
+            </tr>
+        </template>
+    </turbo-stream>
+{% endblock %}
+
+{% block update %}
+    <turbo-stream action="replace" target="category_{{ entity.id }}">
+        <template>
+            <tr id="category_{{ entity.id }}">
+                <td>{{ entity.id }}</td>
+                <td>
+                    <a href="{{ path('app_category_show', {'id': entity.id}) }}">show</a>
+                    <a href="{{ path('app_category_edit', {'id': entity.id}) }}">edit</a>
+                </td>
+            </tr>
+        </template>
+    </turbo-stream>
+{% endblock %}
+
+{% block remove %}
+    <turbo-stream action="remove" target="category_{{ entity.id }}"></turbo-stream>
+{% endblock %}
