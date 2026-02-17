@@ -14,11 +14,25 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
+# Copy only composer files first (for cache)
+COPY composer.json composer.lock ./
+
+# Allow unlimited memory for composer
+ENV COMPOSER_MEMORY_LIMIT=-1
+
+# Install dependencies (optimized)
+RUN composer install \
+    --no-dev \
+    --no-scripts \
+    --no-progress \
+    --prefer-dist \
+    --optimize-autoloader
+
 # Copy project files
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Run scripts after
+RUN composer dump-autoload --optimize
 
 # Fix permissions
 RUN chown -R www-data:www-data var
