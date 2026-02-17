@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: symfony-app
+    name: SymfonyUX
     env: php
     plan: free
     buildCommand: "composer install --no-dev --optimize-autoloader"
